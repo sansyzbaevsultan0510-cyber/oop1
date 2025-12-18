@@ -1,6 +1,6 @@
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args ) {
 
         Sport football = new Sport("Football");
         Sport tennis = new Sport("Tennis");
