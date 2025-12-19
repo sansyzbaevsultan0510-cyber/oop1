@@ -1,19 +1,16 @@
 public class Main {
-
     public static void main(String[] args ) {
-
         Sport football = new Sport("Football");
         Sport tennis = new Sport("Tennis");
-
         Player p1 = new Player("Uali", football);
         Player p2 = new Player("Yeraly", tennis);
         SportsClub club = new SportsClub("BDA2509");
-        System.out.println(football.name);
-        System.out.println(tennis.name);
-        System.out.println(p1.name + " plays " + p1.sport.name);
-        System.out.println(p2.name + " plays " + p2.sport.name);
-        System.out.println("Club name: " + club.name);
-        if (p1.sport.name.equals(p2.sport.name)) {
+        System.out.println(football.getName());
+        System.out.println(tennis.getName());
+        System.out.println(p1.getName() + " plays " + p1.getSport().getName());
+        System.out.println(p2.getName() + " plays " + p2.getSport().getName());
+        System.out.println("Club name: " + club.getName());
+        if (p1.getSport().getName().equals(p2.getSport().getName())) {
             System.out.println("Players play the same sport");
         } else {
             System.out.println("Players play different sports");
@@ -21,22 +18,46 @@ public class Main {
     }
 }
 class Sport {
-    String name;
-    Sport(String name) {
+    private String name;
+    public Sport(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
         this.name = name;
     }
 }
 class Player {
-    String name;
-    Sport sport;
-    Player(String name, Sport sport) {
+    private String name;
+    private Sport sport;
+    public Player(String name, Sport sport) {
         this.name = name;
+        this.sport = sport;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Sport getSport() {
+        return sport;
+    }
+    public void setSport(Sport sport) {
         this.sport = sport;
     }
 }
 class SportsClub {
-    String name;
-    SportsClub(String name) {
+    private String name;
+    public SportsClub(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
         this.name = name;
     }
 }
