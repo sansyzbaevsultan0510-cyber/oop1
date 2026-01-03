@@ -1,63 +1,36 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
 public class Main {
-    public static void main(String[] args ) {
-        Sport football = new Sport("Football");
-        Sport tennis = new Sport("Tennis");
-        Player p1 = new Player("Uali", football);
-        Player p2 = new Player("Yeraly", tennis);
-        SportsClub club = new SportsClub("BDA2509");
-        System.out.println(football.getName());
-        System.out.println(tennis.getName());
-        System.out.println(p1.getName() + " plays " + p1.getSport().getName());
-        System.out.println(p2.getName() + " plays " + p2.getSport().getName());
-        System.out.println("Club name: " + club.getName());
-        if (p1.getSport().getName().equals(p2.getSport().getName())) {
-            System.out.println("Players play the same sport");
-        } else {
-            System.out.println("Players play different sports");
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Player[] players = new Player[3];
+        players[0] = new FootballPlayer("Uali", 18);
+        players[1] = new TennisPlayer("Yeraly", 19);
+        players[2] = new FootballPlayer("Altai", 17);
+        System.out.println("All players:");
+        for (Player p : players) {
+            System.out.println(p);
         }
-    }
-}
-class Sport {
-    private String name;
-    public Sport(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-}
-class Player {
-    private String name;
-    private Sport sport;
-    public Player(String name, Sport sport) {
-        this.name = name;
-        this.sport = sport;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Sport getSport() {
-        return sport;
-    }
-    public void setSport(Sport sport) {
-        this.sport = sport;
-    }
-}
-class SportsClub {
-    private String name;
-    public SportsClub(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+        System.out.print("\nEnter player name to search: ");
+        String search = sc.nextLine();
+        for (Player p : players) {
+            if (p.getName().equals(search)) {
+                System.out.println("Found: " + p);
+            }
+        }
+        System.out.println("\nFootball players:");
+        for (Player p : players) {
+            if (p instanceof FootballPlayer) {
+                System.out.println(p);
+            }
+        }
+        Arrays.sort(players);
+        System.out.println("\nSorted by name:");
+        for (Player p : players) {
+            System.out.println(p);
+        }
+        System.out.println("\nCompare first and third player:");
+        System.out.println(players[0].equals(players[2]));
     }
 }
